@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Highest Rated Board Games</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/style-nav.css">
+    <link rel="stylesheet" href="../static/css/style-table.css">
+</head>
+<body>
+    <div class="nav-container bg-blue am"> <!--header/navigation bar-->
+        <h1 class="ml-1p nav-logo"><a href="/" class="a-logo">BoardGameTracker</a></h1>
+        <div class="flex aic">
+            <label class="fs-24 yellow mr-10 bold text-outline" for="searchInput">Find A Game:</label>
+            <div class = "flex aic search-container ASC">
+                <input type="text" class="nav-input mr-10 border-3" id="searchInput">
+                <!-- <button class="nav-searchbutton bold bg-am" id="searchButton" onclick="getGame()">Find Game</button> -->
+                <div class="suggestions black">
+                    <ul></ul>
+                </div>
+            </div>
+        </div>
+        {% if 'username' in session: %}
+        <div class="flex mr-1p aic">
+            <div class="dropdown">
+                <button class="mr-20 hello white ASC noborder bg-blue dropbtn">Welcome, <span class="am">{{ session['username'] }}</span> 🔽</button>
+                <div class="dropdown-content">
+                    <a href="/collection">Collection</a>
+                    <a href="/tracking">Tracked Games</a>
+                    <a href="/plays/log">Plays</a>
+                    <a href="/ratings">Ratings</a>
+                </div>
+            </div>
+            <a href="/logout"><button class="nav-logregbutton bold bg-blue noborder navhover am text-outline">Logout</button></a>
+        </div>
+        {% else: %}
+        <div class="flex mr-1p">
+            <a href="/login_register"><button class="nav-logregbutton bold bg-blue noborder navhover am text-outline">Login/Register</button></a>
+        </div>
+        {% endif %}
+    </div> <!--end header/navigation bar-->
+    <div class="container-content bg-blue-light">
+        <div class="container-content-35">
+        <h1 class="TAL ml-25 white text-outline-2 yellow">Highest Rated Games</h1>
+            <table class="bg-white mt-5">
+                <thead class="fs-24 bg-am-light">
+                    <tr>
+                        <th class="col-10">#</th>
+                        <th class="col-65 TAL"><span class="ml-10">Game</span></th>
+                        <th class="col-25">Rating</th>
+                    </tr>
+                </thead>
+                <tbody class="bold fs-18">
+                    {% for i in range(games|length): %}
+                    <tr>
+                        <td>{{i+1}}</td>
+                        <td class="TAL"><a href="/game/{{games[i]['api_id']}}" class="blue ml-10">{{games[i]['title']}}</a></td>
+                        <td>{{ games[i]['avgrating']|round(1)}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="../static/js/script.js"></script>
+</body>
+</html>

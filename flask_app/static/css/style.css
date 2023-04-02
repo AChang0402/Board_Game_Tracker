@@ -1,0 +1,342 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Calibri";
+}
+
+/* body * {
+    outline: red 1px solid;
+} */
+
+/* borders */
+.border-2 {
+    border: 2px black solid;
+}
+.border-3 {
+    border: 3px black solid
+}
+.noborder {
+    border: none;
+}
+.borderL-1 {
+    border-left: 1px solid black
+}
+.borderR-1 {
+    border-right: 1px solid black
+}
+
+
+/* containers and flex */
+.container-fit{
+    width: fit-content;
+    vertical-align:middle;
+    margin: 0 auto;
+}
+
+.flex-container-fixed {
+    width: 996px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 10px 0px;
+    align-items:center;
+}
+
+.flex-container-fixed-end {
+    width: 996px;
+    display: flex;
+    justify-content: end;
+    margin: 0 auto;
+    padding: 10px 0px;
+}
+
+.container {
+    width: 996px;
+    margin: 0 auto;
+}
+
+.container-med {
+    width: 500px;
+    margin: 0 auto;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-container {
+    width: fit-content;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    gap: 100px;
+}
+
+.flex-1{
+    flex: 1;
+}
+
+.flex-2{
+    flex: 2;
+}
+
+.flex-3{
+    flex: 3;
+}
+
+/* centering/alignment tools */
+.aic {
+    align-items: center;
+}
+
+.ASC {
+    align-self: center;
+}
+
+.m0auto {
+    margin: 0 auto;
+}
+
+.TAC {
+    text-align: center;
+}
+
+.TAE {
+    text-align: end;
+}
+
+.align-items-top {
+    align-items:flex-start
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 75px;
+}
+
+.TAL{
+    text-align:start
+}
+
+.VAM {
+    vertical-align:middle;
+}
+
+.indent-10 {
+    text-indent:10px;
+}
+
+.indent-25{
+    text-indent:25px;
+}
+
+/* padding tools */
+.padding {
+    padding: 15px;
+}
+
+.padding-25 {
+    padding: 25px;
+}
+
+.padding-lr-25{
+    padding: 15px 25px 0;
+}
+
+.padding-more {
+    padding: 40px;
+}
+
+.padding-L{
+    padding:50px;
+}
+
+/* margin tools */
+
+.mt-50{
+    margin-top: 50px;
+}
+.mt-5 {
+    margin-top:5px;
+}
+.mt-10 {
+    margin-top:10px;
+}
+.mt-20 {
+    margin-top:20px
+}
+.mt-50 {
+    margin-top:50px
+}
+.ms-10 {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.mr-10 {
+    margin-right:10px;
+}
+.mr-20{
+    margin-right:20px;
+}
+.mr-25{
+    margin-right:25px;
+}
+.ml-5{
+    margin-left:5px;
+}
+.ml-10 {
+    margin-left:10px;
+}
+.ml-20{
+    margin-left:20px
+}
+.ml-25 {
+    margin-left:25px;
+}
+.ml-50{
+    margin-left:50px
+}
+.mr-50{
+    margin-right:50px;
+}
+.mb-20{
+    margin-bottom: 20px;
+}
+.ml-1p{
+    margin-left:1%
+}
+.mr-1p{
+    margin-right:1%
+}
+
+/* font and colors */
+
+.fs-24, .fs-24 * {
+    font-size:24px
+}
+.fs-20, .fs-20 * {
+    font-size: 20px
+}
+.fs-18 * {
+    font-size: 18px
+}
+.fs-28 * {
+    font-size:28px;
+}
+.fs-16 * {
+    font-size:16px;
+}
+.fs-12 {
+    font-size:12px;
+}
+
+.bold{
+    font-weight: bold;
+}
+.unbold{
+    font-weight:normal
+}
+.red {
+    color:firebrick
+}
+
+.green {
+    color: forestgreen
+}
+
+.white {
+    color: white
+}
+
+.black {
+    color:black
+}
+
+.yellow {
+    color:gold;
+}
+
+.am-light {
+    color: rgb(200, 250, 225)
+}
+
+.bg-blue {
+    background-color:rgb(50,80,175)
+}
+
+.blue {
+    color:rgb(50,80,175)
+}
+
+.bg-blue-light {
+    background-color:rgb(100, 135, 200)
+}
+
+.bg-white{
+    background-color: white;
+}
+
+.bg-black{
+    background-color: black;
+}
+
+.am {
+    color: aquamarine
+}
+
+.bg-am{
+    background-color: aquamarine
+}
+
+.bg-am-light{
+    background-color:rgb(200, 250, 225)
+}
+
+/* other */
+
+.boxshadow{
+    box-shadow: 2px 3px 3px black
+}
+
+.header-text{
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.header-links{
+    display:flex;
+    justify-content:space-between;
+    gap: 50px;
+}
+
+.underline{
+    text-decoration: underline
+}
+
+a {
+    text-decoration: none;
+}
+
+textarea {
+    resize: none;
+}
+
+
+
+
+.text-outline {
+    -webkit-text-stroke-width: .25px;
+    -webkit-text-stroke-color: black;
+}
+
+.text-outline-2 {
+    -webkit-text-stroke-width: .5px;
+    -webkit-text-stroke-color: black;
+}
+
+button {
+    cursor:pointer;
+}

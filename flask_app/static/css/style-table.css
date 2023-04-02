@@ -1,0 +1,76 @@
+.container-content {
+    width:100%;
+    padding: 40px 0px;
+    margin-top: 50px
+}
+
+.container-content-60{
+    width:60%;
+    margin:0 auto;
+}
+
+.container-content-half{
+    width:50%;
+    margin:0 auto;
+}
+
+.container-content-40{
+    width:40%;
+    margin:0 auto;
+}
+
+.container-content-35{
+    width:35%;
+    margin:0 auto;
+}
+
+.container-content-5{
+    width:5%;
+    margin: 0 auto;
+}
+
+.container-table-name{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:end
+}
+
+table, th, td {
+    border: 2px solid black;
+    border-collapse: collapse;
+    text-align: center
+}
+
+table {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.col-50 {
+    width: 50%
+}
+.col-25 {
+    width: 25%
+}
+.col-75 {
+    width: 75%
+}
+.col-40{
+    width: 40%
+}
+.col-15{
+    width: 15%
+}
+.col-20{
+    width: 20%
+}
+.col-35{
+    width:35%
+}
+
+.col-10{
+    width: 10%
+}
+
+

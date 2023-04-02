@@ -1,0 +1,65 @@
+.container-content {
+    width:100%;
+    padding: 20px 0px 40px;
+    margin-top: 50px
+}
+
+.container-content-2 {
+    width:100%;
+    padding: 20px 0px;
+    margin-top: 50px
+}
+
+.container-content-half{
+    display: flex;
+    justify-content: center;
+    width:40%;
+    margin: 20px auto;
+}
+
+#imgGame {
+    width: 240px;
+    height: 240px;
+    object-fit:contain;
+    border: 3px solid black;
+    background-color: white;
+    padding: 5px;
+}
+
+#boxGameInfo {
+    border-radius: 15px;
+}
+
+input {
+    border: 1px solid black;
+    padding: 2px 5px;
+}
+
+#input_numplayers {
+    width: 50px;
+}
+
+.form_logreg{
+    border-radius: 10px;
+    padding: 25px 0px
+}
+
+.form-button{
+    padding: 2px 5px;
+    font-size: 18px;
+    border-radius: 8px;
+}
+
+label {
+    font-weight:bold;
+}
+
+.mt-10_auto {
+    width: fit-content;
+    margin: 10px auto 0px
+}
+
+.mt-20_auto {
+    width: fit-content;
+    margin: 20px auto 0px
+}

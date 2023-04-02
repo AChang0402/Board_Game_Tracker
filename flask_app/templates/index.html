@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BoardGameTracker - Home</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style-nav.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style-index.css') }}">
+</head>
+<body>
+    <div class="nav-container bg-blue am"> <!--header/navigation bar-->
+        <h1 class="ml-1p nav-logo"><a href="/" class="a-logo">BoardGameTracker</a></h1>
+        <div class="flex aic">
+            <label class="fs-24 yellow mr-10 bold text-outline" for="searchInput">Find A Game:</label>
+            <div class = "flex aic search-container ASC">
+                <input type="text" class="nav-input mr-10 border-3" id="searchInput">
+                <!-- <button class="nav-searchbutton bold bg-am" id="searchButton" onclick="getGame()">Find Game</button> -->
+                <div class="suggestions black">
+                    <ul></ul>
+                </div>
+            </div>
+        </div>
+        {% if 'username' in session: %}
+        <div class="flex mr-1p aic">
+            <div class="dropdown">
+                <button class="mr-20 hello white ASC noborder bg-blue dropbtn">Welcome, <span class="am">{{ session['username'] }}</span> 🔽</button>
+                <div class="dropdown-content">
+                    <a href="/collection">Collection</a>
+                    <a href="/tracking">Tracked Games</a>
+                    <a href="/plays/log">Plays</a>
+                    <a href="/ratings">Ratings</a>
+                </div>
+            </div>
+            <a href="/logout"><button class="nav-logregbutton bold bg-blue noborder navhover am text-outline">Logout</button></a>
+        </div>
+        {% else: %}
+        <div class="flex mr-1p">
+            <a href="/login_register"><button class="nav-logregbutton bold bg-blue noborder navhover am text-outline">Login/Register</button></a>
+        </div>
+        {% endif %}
+    </div> <!--end header/navigation bar-->
+    <div class="container-content bg-blue-light mt-50 fs-24">
+        <a href="/collection">
+            <div>
+                <img src="../static/img/collection.jpg" alt="Collection" class="content-img">
+                <p class="TAC white">Collection</p>
+            </div>
+        </a>
+        <a href="/tracking">
+            <div>
+                <img src="../static/img/star-yellow.png" alt="Tracked Games" class="img-padded">
+                <p class="TAC white">Tracked Games</p>
+            </div>
+        </a>
+        <a href="/plays/log">
+            <div>
+                <img src="../static/img/play.jpg" alt="Plays" class="content-img">
+                <p class="TAC white">Plays</p>
+            </div>
+        </a>
+        <a href="/ratings">
+            <div>
+                <img src="../static/img/ratings.png" alt="Ratings" class="img-padded">
+                <p class="TAC white">Ratings</p>
+            </div>
+        </a>
+    </div>
+    <div class="container-content2 bg-am-light fs-24">
+        <a href="/games/highestrated">
+            <div class="flex-center">
+                <img src="../static/img/highest-rated.png" alt="Plays" class="content-img-circular aic">
+                <p class="TAC blue bold mt-10">EXPLORE:<br>Highest Rated Board Games</p>
+            </div>
+        </a>
+    </div>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+.container-content {
+    width:100%;
+    padding: 40px 0px;
+    margin-top: 50px
+}
+
+.container-content-half{
+    display: flex;
+    justify-content: center;
+    width:60%;
+    margin: 0 auto;
+}
+
+#imgGame {
+    width: 240px;
+    height: 240px;
+    object-fit:contain;
+    border: 3px solid black;
+    background-color: white;
+    padding: 5px;
+}
+
+#imgTracking {
+    width:23px;
+    height:23px;
+    /* border-radius: 50%; */
+    border: solid black 1px;
+    padding: 1px;
+    background-color: white;
+}
+
+#buttonCollection{
+    border-radius:5px;
+    padding: 0px 2px;
+    box-shadow: 1px 1px 1px black;
+    border: 1px black solid;
+    position: relative;
+    bottom: 2px;
+}
+
+#buttonTracking{
+    width:fit-content;
+    height:fit-content;
+    background-color:inherit;
+    border: none;
+}
+
+#boxGameInfo {
+    border-radius: 15px;
+    box-shadow: 2px 5px 5px black
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.buttonRating {
+    margin-left: 10px;
+    position: fixed;
+    font-size: 24px;
+}
+
+.buttonPlay{
+    margin-left: 10px;
+    position: fixed;
+    font-size: 18px;
+    font-weight:bold;
+}
+
+.flex-column {
+    display:flex;
+    flex-direction:column
+}
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+/* .open-button {
+    background-color: #555;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    position: fixed;
+    bottom: 23px;
+    right: 28px;
+    width: 280px;
+} */
+
+/* The popup form - hidden by default */
+.form-popup {
+    display: none;
+    position:relative;
+    /* bottom: 55px;
+    right: 10px; */
+    /* z-index: 9; */
+    border: solid black 2px;
+    background-color:rgb(50,80,175);
+    padding: 3px;
+}
+
+.inputRating{
+    width: 30px;
+    font-size: 22px;
+    height: 25px;
+    padding:0 5px;
+}
+
+/* Add styles to the form container */
+/* .form-container {
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
+} */
+
+/* Full-width input fields */
+/* .form-container input[type=text],
+.form-container input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+} */
+
+/* When the inputs get focus, do something */
+/* .form-container input[type=text]:focus,
+.form-container input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+} */
+
+/* Set a style for the submit/login button */
+/* .form-container .btn {
+    color: white;
+    border: none;
+    cursor: pointer;
+} */
+
+.formButton{
+    font-size:16px;
+    padding: 0 2px;
+    height: fit-content;
+    align-self:center;
+    margin: 0 1px;
+    box-shadow: 1px 1px 1px black;
+}
+
+
+
+/* Add a red background color to the cancel button */
+/* .form-container .cancel {
+    background-color: red;
+} */
+
+/* Add some hover effects to buttons */
+/* .form-container .btn:hover,
+.open-button:hover {
+    opacity: 1;
+} */

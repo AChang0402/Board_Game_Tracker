@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log a Play</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style-nav.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style-form.css') }}">
+
+</head>
+<body>
+    <div class="nav-container bg-blue am"> <!--header/navigation bar-->
+        <h1 class="ml-1p nav-logo"><a href="/" class="a-logo">BoardGameTracker</a></h1>
+        <div class="flex aic">
+            <label class="fs-24 yellow mr-10 bold text-outline" for="searchInput">Find A Game:</label>
+            <div class = "flex aic search-container ASC">
+                <input type="text" class="nav-input mr-10 border-3" id="searchInput">
+                <!-- <button class="nav-searchbutton bold bg-am" id="searchButton" onclick="getGame()">Find Game</button> -->
+                <div class="suggestions black">
+                    <ul></ul>
+                </div>
+            </div>
+        </div>
+        {% if 'username' in session: %}
+        <div class="flex mr-1p aic">
+            <div class="dropdown">
+                <button class="mr-20 hello white ASC noborder bg-blue dropbtn">Welcome, <span class="am">{{ session['username'] }}</span> 🔽</button>
+                <div class="dropdown-content">
+                    <a href="/collection">Collection</a>
+                    <a href="/tracking">Tracked Games</a>
+                    <a href="/plays/log">Plays</a>
+                    <a href="/ratings">Ratings</a>
+                </div>
+            </div>
+            <a href="/logout"><button class="nav-logregbutton bold bg-blue noborder navhover am text-outline">Logout</button></a>
+        </div>
+        {% else: %}
+        <div class="flex mr-1p">
+            <a href="/login_register"><button class="nav-logregbutton bold bg-blue noborder navhover am text-outline">Login/Register</button></a>
+        </div>
+        {% endif %}
+    </div> <!--end header/navigation bar-->
+    <input type="hidden" value="{{api_id}}" id="api_id">
+    <div class="container-content bg-blue-light"> <!--content starts here-->
+        <h1 class="container-content-half white text-outline">Log A Play</h1>
+        <div class="container-content-half">
+            <div class="flex-2">
+                <img src="{{ url_for('static', filename='img/collection.jpg') }}" alt="" id="imgGame">
+            </div>
+            <div class="flex-3 bg-am-light padding border-3" id="boxGameInfo">
+                <form action="/plays/addplay/{{api_id}}/submit" method="post">
+                    <input type="hidden" name="title" id="inputTitle">
+                    <input type="hidden" name="api_id" value="{{api_id}}">
+                    <h2 id="name" class="ml-10">(Game Name)</h2>
+                    <span class="fs-20">
+                        <div class="mt-20 ml-25">
+                            <label for="input_date">Date: </label>
+                            <input type="date" name="date" id="input_date">
+                        </div>
+                        <div class="mt-20 ml-25">
+                            <label for="input_numplayers"># of Players: </label>
+                            <input type="number" name="num_players" id="input_numplayers">
+                        </div>
+                        <div class="mt-20 ml-25">
+                            <label for="input_winner">Winner:</label>
+                            <input type="text" name="winner" id="input_winner">
+                        </div>
+                        <div class="fs-16 bold red">
+                            {% with messages = get_flashed_messages(category_filter=["play"]) %}
+                                {% for message in messages %}
+                                    <p class = "ml-25 mt-20">{{ message }}</p>
+                                {% endfor %}
+                            {% endwith %}
+                        </div>
+                    </span>
+                    <div class="TAE">
+                        <button class="form-button mt-20 bg-blue white boxshadow">Add Play</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script_add_play.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> - Details</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/style-nav.css">
+    <link rel="stylesheet" href="../static/css/style-game.css">
+</head>
+<body>
+    <div class="nav-container bg-blue am"> <!--header/navigation bar-->
+        <h1 class="ml-1p nav-logo"><a href="/" class="a-logo">BoardGameTracker</a></h1>
+        <div class="flex aic">
+            <label class="fs-24 yellow mr-10 bold text-outline" for="searchInput">Find A Game:</label>
+            <div class = "flex aic search-container ASC">
+                <input type="text" class="nav-input mr-10 border-3" id="searchInput">
+                <!-- <button class="nav-searchbutton bold bg-am" id="searchButton" onclick="getGame()">Find Game</button> -->
+                <div class="suggestions black">
+                    <ul></ul>
+                </div>
+            </div>
+        </div>
+        {% if 'username' in session: %}
+        <div class="flex mr-1p aic">
+            <div class="dropdown">
+                <button class="mr-20 hello white ASC noborder bg-blue dropbtn">Welcome, <span class="am">{{ session['username'] }}</span> 🔽</button>
+                <div class="dropdown-content">
+                    <a href="/collection">Collection</a>
+                    <a href="/tracking">Tracked Games</a>
+                    <a href="/plays/log">Plays</a>
+                    <a href="/ratings">Ratings</a>
+                </div>
+            </div>
+            <a href="/logout"><button class="nav-logregbutton bold bg-blue noborder navhover am text-outline">Logout</button></a>
+        </div>
+        {% else: %}
+        <div class="flex mr-1p">
+            <a href="/login_register"><button class="nav-logregbutton bold bg-blue noborder navhover am text-outline">Login/Register</button></a>
+        </div>
+        {% endif %}
+    </div> <!--end header/navigation bar-->
+    <input type="hidden" value="{{api_id}}" id="api_id">
+    <div class="container-content bg-blue-light"> <!--content starts here-->
+        <div class="container-content-half">
+            <div class="flex-1">
+                <img src="../static/img/collection.jpg" alt="" id="imgGame">
+                {% if 'id' in session: %}
+                <div class="fs-24">
+                    <div class="flex VAM mt-10">
+                        {% if in_ratings == False: %}
+                        <p class="white text-outline ms-10">Rating: 
+                            <button class="bg-blue-light noborder buttonRating yellow" onclick="openForm()">rate me!</button>
+                            <div class="form-popup flex" id="myForm">
+                                <div class="flex">
+                                    <form action="/rating/add/{{api_id}}" method="post" class="flex">
+                                        <input type="hidden" name="title" class="inputTitle">
+                                        <input type="hidden" name="api_id" value="{{api_id}}">
+                                        <input type="number" name="rating" class="inputRating" step="0.1">
+                                        <button type="submit" class="formButton">Save</button>
+                                    </form>
+                                    <button type="button" class="formButton cancel" onclick="closeForm()">Close</button>
+                                </div>
+                                <div class="fs-16 yellow">
+                                    <p>Enter rating: 0-10</p>
+                                </div>
+                            </div>
+                        </p>
+                        {% else: %}
+                        <p class="white text-outline ms-10">Rating: 
+                            <button class="bold bg-blue-light noborder am open-button buttonRating" onclick="openForm()">{{ in_ratings }}</button>
+                            <div class="form-popup flex" id="myForm">
+                                    <div class="flex">
+                                    <form action="/rating/edit/{{api_id}}" method="post" class="flex">
+                                        <input type="hidden" name="title" class="inputTitle">
+                                        <input type="hidden" name="api_id" value="{{api_id}}">
+                                        <input type="number" value="{{ in_ratings }}" name="rating" class="inputRating" step="0.1">
+                                        <button type="submit" class="formButton">Save</button>
+                                    </form>
+                                    <form action="/rating/delete/{{api_id}}" method="post" class="flex">
+                                        <input type="hidden" name="title" class="inputTitle">
+                                        <input type="hidden" name="api_id" value="{{api_id}}">
+                                        <button type="submit" class="formButton">Del</button>
+                                    </form>
+                                    <button type="button" class="formButton cancel" onclick="closeForm()">Close</button>
+                                    </div>
+                                    <div class="fs-16 yellow">
+                                        <p>Enter rating: 0-10</p>
+                                    </div>
+                            </div>
+                        </p>
+                        {% endif %}
+                    </div>
+                    {% with messages = get_flashed_messages(category_filter=["rating"]) %}
+                            {% for message in messages %}
+                            <div class="fs-16 red ml-10 text-outline">
+                                <p>{{ message }}</p>
+                            </div>
+                            {% endfor %}
+                        {% endwith %}
+                    {% if in_collection == False: %}
+                    <form action="/collection/add/{{api_id}}" method="post">
+                        <p class="white text-outline ms-10 mt-10">In Collection? 
+                            <input type="hidden" name="title" class="inputTitle">
+                            <input type="hidden" name="api_id" value="{{api_id}}">
+                            <span class="am bold">No</span><span class="fs-16"><button class="bg-am-white ml-5" id="buttonCollection">add</button></span>
+                        </p>
+                    </form>
+                    {% else: %}
+                    <form action="/collection/remove/{{api_id}}" method="post">
+                        <p class="white text-outline ms-10 mt-10">In Collection? 
+                            <input type="hidden" name="title" class="inputTitle">
+                            <input type="hidden" name="api_id" value="{{api_id}}">
+                            <span class="am bold">Yes</span><span class="fs-16"><button class="bg-am-white ml-5" id="buttonCollection">remove</button></span>
+                        </p>
+                    </form>
+                    {% endif %}
+                    <!-- <p class="white text-outline ms-10 mt-5">Tracking? <span class="am bold">Y</span></p> -->
+                    {% if in_tracking == False: %}
+                    <form action="/tracked/add/{{api_id}}" method="post">
+                        <p class="white text-outline ms-10 mt-10">Tracking?
+                            <input type="hidden" name="title" class="inputTitle">
+                            <input type="hidden" name="api_id" value="{{api_id}}">
+                            <button id="buttonTracking" class="VAM"><img id="imgTracking" class="trackingY" src="../static/img/star.png"></button>
+                        </p>
+                    </form>
+                    {% else: %}
+                    <form action="/tracked/remove/{{api_id}}" method="post">
+                        <p class="white text-outline ms-10 mt-10">Tracking?
+                            <input type="hidden" name="title" class="inputTitle">
+                            <input type="hidden" name="api_id" value="{{api_id}}">
+                            <button id="buttonTracking" class="VAM"><img id="imgTracking" class="trackingY" src="../static/img/star-yellow.png"></button>
+                        </p>
+                    </form>
+                    {% endif %}
+                    <div>
+                        <p class="white text-outline ms-10 mt-5"># of Plays: <span class="am bold">{{plays}}</span>
+                            <a href="/plays/addplay/{{api_id}}"><button class="yellow noborder bg-blue-light buttonPlay">Add a Play</button></a>
+                        </p>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            <div class="flex-3 bg-am-light padding-25 border-3" id="boxGameInfo"> <!--Game Info Box-->
+                <h2 id="name">(Game Name)</h2>
+                <span class="fs-18 bold">
+                    <p class="mt-5 ms-10">Year: <span id="year" class="unbold"></span></p>
+                    <p class="mt-5 ms-10">Players: <span id="num_players" class="unbold"></span></p>
+                    <p class="mt-5 ms-10">Play Time: <span id="play_time" class="unbold"></span></p>
+                    <p class="mt-5 ms-10">Designer: <span id="designer" class="unbold"></span></p>
+                    <p class="mt-5 ms-10">Publisher: <span id="publisher" class="unbold"></span></p>
+                    <p class="mt-5 ms-10">Description: <br><span id="description" class="unbold"></span></p>
+                </span>
+            </div>
+        </div>
+    </div>
+    <script src="../static/js/script.js"></script>
+    <script src="../static/js/script_view_game.js"></script>
+</body>
+</html>
