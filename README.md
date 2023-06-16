@@ -17,13 +17,13 @@ Board Game Tracker is a website that allows users to find information on board g
 
 ## Previews
 ### Home Page
-![Alt text](screenshot_home.png)
+![Home Page](screenshots/screenshot_home.png)
 
 ### Game Information
-![Game Information](screenshot_gwt.png)
+![Game Information](screenshots/screenshot_gwt.png)
 
 ### Collection List
-![Collection](screenshot_collection.png)
+![Collection](screenshots/screenshot_collection.png)
 
 ## Future Features and Considerations
 * Sortable Lists
